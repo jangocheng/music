@@ -21,8 +21,8 @@ export default new Router({
       path: '/index',
       name: 'index',
       component (resolve) {
-        require.ensure(['../components/header/header'], () => {
-          resolve(require('../components/header/header'))
+        require.ensure(['../components/swiper/swiper'], () => {
+          resolve(require('../components/swiper/swiper'))
         })
       }
     }

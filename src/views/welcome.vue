@@ -29,7 +29,6 @@ export default {
         if (this.countdown === 0) {
           this.clearTime(timeout)
         }
-        console.log(this.countdown)
       }, 1000)
     },
     clearTime (time) {

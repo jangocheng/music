@@ -4,10 +4,12 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import MuseUI from 'muse-ui'
+import swiper from 'vue-awesome-swiper'
 import 'muse-ui/dist/muse-ui.css'
 import 'muse-ui/dist/theme-carbon.css'
 
 Vue.use(MuseUI)
+Vue.use(swiper)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
