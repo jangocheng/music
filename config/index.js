@@ -13,10 +13,10 @@ module.exports = {
     // 解决调用api跨域问题
     proxyTable: {
       '/api': {
-        target: 'http://127.0.0.1:3000',
+        target: 'http://localhost:3000',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': '/api'
+          '^/api': ''
         }
       }
     },

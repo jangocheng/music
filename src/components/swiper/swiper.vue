@@ -2,7 +2,7 @@
   <div>
     <swiper :options="swiperOption" ref="mySwiper">
       <swiper-slide v-for="(item,index) in items" :key="index">
-        <img v-if="item.src" :src="item.src">
+        <img v-if="item.pic" :src="item.pic">
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
@@ -24,12 +24,7 @@ export default{
   },
   data () {
     return {
-      items: [
-        // {src: require('./1.jpg')},
-        // {src: require('./2.jpg')},
-        // {src: require('./3.jpg')},
-        // {src: require('./4.jpg')}
-      ],
+      items: [],
       swiperOption: {
         notNextTick: true,
         pagination: '.swiper-pagination',
@@ -62,9 +57,7 @@ export default{
     },
     getBannerResource () {
       api.getBannerResource().then((response) => {
-        console.log('成功')
-        console.log(response)
-        this.items = response.data.result.pic
+        this.items = response.data.banners
       }).catch((response) => {
         console.log(response)
       })
