@@ -11,7 +11,7 @@
 
 <script>
 import {swiper, swiperSlide} from 'vue-awesome-swiper'
-import 'swiper/dist/css/swiper.css' // 若不引入这个样式，会造成图片竖向排列，即所有图片展示在第一页
+import '../../../static/swiper.css' // 若不引入这个样式，会造成图片竖向排列，即所有图片展示在第一页
 import api from '../../api/index'
 
 export default{
@@ -74,7 +74,7 @@ export default{
 
 .swiper-wrapper {
   margin-top: 10px;
-  height: 230px;
+  height: 200px;
 }
 
 .swiper-wrapper img {

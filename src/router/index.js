@@ -1,30 +1,38 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import VueRouter from 'vue-router'
 // 方式二（可行）import HelloWorld from '@/components/HelloWorld'
 
-Vue.use(Router)
+Vue.use(VueRouter)
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'welcome',
+const router = [
+  {
+    path: '/',
+    name: 'welcome',
       // 方式一（不可行）component: require('../views/index')
       // 方式二（可行）component: HelloWorld
       // 方式三（可行）component: resolve => require(['../views/index'],resolve)
-      component (resolve) {
-        require.ensure(['../views/welcome'], () => {
-          resolve(require('../views/welcome'))
-        })
-      }
-    }, {
-      path: '/index',
-      name: 'index',
-      component (resolve) {
-        require.ensure(['../components/swiper/swiper'], () => {
-          resolve(require('../components/swiper/swiper'))
-        })
-      }
+    component (resolve) {
+      require.ensure(['../views/welcome'], () => {
+        resolve(require('../views/welcome'))
+      })
     }
-  ]
-})
+  }, {
+    path: '/index',
+    name: 'index',
+    component (resolve) {
+      require.ensure(['../components/header/header'], () => {
+        resolve(require('../components/header/header'))
+      })
+    },
+    children: [{
+      path: '/personal',
+      name: 'personal',
+      component (resolve) {
+        require.ensure(['../components/personal_header/personal_header'], () => {
+          resolve(require('../components/personal_header/personal_header'))
+        })
+      }
+    }]
+  }
+]
+export default router

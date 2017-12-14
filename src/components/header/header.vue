@@ -5,7 +5,7 @@
       <router-link to="/find" class="item">
         <span class="music"><i class="music-icon"></i></span>
       </router-link>
-      <router-link to="/search" class="item">
+      <router-link to="/index/personal" class="item">
         <span class="personal"><i class="personal-icon"></i></span>
       </router-link>
       <router-link to="/social" class="item">

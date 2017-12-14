@@ -1,4 +1,4 @@
-import {Apiroot} from './config.js'
+const Apiroot = 'api'
 
 const apiMusic = {
   banner: '/banner' // 首页轮播图

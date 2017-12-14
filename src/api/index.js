@@ -6,9 +6,6 @@ import {
 export default {
   // 获取banner首页轮播图
   getBannerResource () {
-    return axios.get('api/banner')
-  },
-  getBannerResource1 () {
     return axios.get(BannerResource)
   }
 }
