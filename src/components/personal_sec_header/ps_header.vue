@@ -60,7 +60,7 @@ export default {
       this.bcg_playlist = imgP.bcg_playlist_prs
     },
     to_recommend_rank () {
-      this.bcg_rank = imgP.bcg_ran_prs
+      this.bcg_rank = imgP.bcg_rank_prs
     }
   }
 }

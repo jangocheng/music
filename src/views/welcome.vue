@@ -1,7 +1,7 @@
 <template>
   <div class="welcome-page">
     <div class="welcome-page-content">
-      <p class="welcome-page-content_tip">网易云音乐</p>
+      <p class="welcome-page-content_tip"></p>
       <p class="welcome-page-content_skip">
         <mu-raised-button :label="'跳过'+countdown" class="demo-raised-button" @click="enter" primary/>
       </p>
@@ -45,7 +45,7 @@ export default {
 .welcome-page {
   width: 100%;
   height: 100%;
-  background: url('../components/header/music.svg') no-repeat;
+  background: url('../../static/images/p_login_bg.jpg') no-repeat center;
   background-size: cover;
   display: flex;
   align-items: center;
