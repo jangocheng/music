@@ -73,8 +73,8 @@ export default{
 }
 
 .swiper-wrapper {
-  margin-top: 10px;
-  height: 200px;
+  margin-top: 0px;
+  height: 170px;
 }
 
 .swiper-wrapper img {

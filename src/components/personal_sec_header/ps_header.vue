@@ -1,33 +1,34 @@
 <template>
   <div class="marking-header">
     <ul class="h-img">
-        <li @click="">
+        <li @click="to_recommend_fm">
             <div class="mhimg">
-                <i class="icon_fm"></i>
+                <!-- <i v-if="!bcg1" id="icon_fm"></i> -->
+                <img :src="bcg_fm"/>
             </div>
             <div class="mha">
                 <a>私人FM</a>
             </div>
         </li>
-        <li @click="">
+        <li @click="to_recommend_daily">
             <div class="mhimg">
-                <i class="icon_calendar"></i>
+                <img :src="bcg_daily"/>
             </div>
             <div class="mha">
                 <a>每日推荐</a>
             </div>
         </li>
-        <li @click="">
+        <li @click="to_recommend_playlist">
             <div class="mhimg">
-                <i class="icon_music"></i>
+                <img :src="bcg_playlist"/>
             </div>
             <div class="mha">
                 <a>歌单</a>
             </div>
         </li>
-        <li @click="">
+        <li @click="to_recommend_rank">
             <div class="mhimg">
-                <i class="icon_top"></i>
+                <img :src="bcg_rank"/>
             </div>
             <div class="mha">
                 <a>排行榜</a>
@@ -37,61 +38,63 @@
   </div>
 </template>
 
+<script>
+import imgP from '../../resource'
+export default {
+  data () {
+    return {
+      bcg_fm: imgP.bcg_fm,
+      bcg_daily: imgP.bcg_daily,
+      bcg_playlist: imgP.bcg_playlist,
+      bcg_rank: imgP.bcg_rank
+    }
+  },
+  methods: {
+    to_recommend_fm () {
+      this.bcg_fm = imgP.bcg_fm_prs
+    },
+    to_recommend_daily () {
+      this.bcg_daily = imgP.bcg_daily_prs
+    },
+    to_recommend_playlist () {
+      this.bcg_playlist = imgP.bcg_playlist_prs
+    },
+    to_recommend_rank () {
+      this.bcg_rank = imgP.bcg_ran_prs
+    }
+  }
+}
+</script>
+
 <style>
-.icon_fm {
-    background: url('./FM.svg') no-repeat center;
-    background-size: contain;
-}
-.icon_calendar {
-    background: url('./calendar.svg') no-repeat center;
-    background-size: contain;
-}
-.icon_music {
-    background: url('./musiclist.svg') no-repeat center;
-    background-size: contain;
-}
-.icon_top {
-    background: url('./toplist.svg') no-repeat center;
-    background-size: contain;
-}
 .marking-header {
     margin-top: 10px;
     overflow: hidden;
 }
 
 .h-img {
-    -webkit-padding-start: 0;
+    -webkit-padding-start: -10;
     text-align: center;
 }
 
 .h-img li {
     display: inline-block;
     list-style: none;
-    margin: 0 18px;
+    margin: 0 14px;
     cursor: pointer;
 }
 
 .mhimg {
     height: 50px;
     width: 50px;
-    border: 1px solid #B72712;
-    border-radius: 50%;
 }
 
-.mhimg i {
+.mhimg img {
     display: inline-block;
     position: relative;
     font-size: 10px;
-    width: 25px;
-    height: 25px;
-    top: 10px;
-    color: #B72712;
-}
-
-.h-img li:hover>.mhimg,
-.h-img li:hover>.mhimg>i {
-    background-color: #B72712;
-    color: #fff
+    width: 50px;
+    height: 50px;
 }
 
 .mha {
@@ -105,8 +108,4 @@
     text-decoration: none;
 }
 
-.h-img li a:hover {
-    font-size: 14px;
-    color: #B72712;
-}
 </style>

@@ -13,7 +13,8 @@
 export default {
   data () {
     return {
-      countdown: 3 // 倒计时时间
+      countdown: 3, // 倒计时时间
+      timeout: ''
     }
   },
   created () {
@@ -21,19 +22,20 @@ export default {
   },
   methods: {
     enter () {
-      this.$router.push('/index')
+      this.clearTime(this.timeout)
+      this.$router.push('/home')
     },
     changeTime () {
-      var timeout = setInterval(() => {
+      this.timeout = setInterval(() => {
         this.countdown --
         if (this.countdown === 0) {
-          this.clearTime(timeout)
+          this.clearTime(this.timeout)
         }
       }, 1000)
     },
     clearTime (time) {
       clearInterval(time)
-      this.$router.push('/index')
+      this.$router.push('/home')
     }
   }
 }

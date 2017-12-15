@@ -1,6 +1,15 @@
 <template>
-  <div >
-    <p>我是index页面</p>
-
+  <div class="home">
+    <header></header>
+    <router-view></router-view>
   </div>
 </template>
+
+<script>
+import header from '../components/header/header'
+export default {
+  component: {
+    header
+  }
+}
+</script>

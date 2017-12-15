@@ -17,22 +17,21 @@ const router = [
       })
     }
   }, {
-    path: '/index',
-    name: 'index',
+    path: '/home',
+    name: 'home',
     component (resolve) {
-      require.ensure(['../components/header/header'], () => {
-        resolve(require('../components/header/header'))
+      require.ensure(['../components/personal_header/personal_header'], () => {
+        resolve(require('../components/personal_header/personal_header'))
       })
-    },
-    children: [{
-      path: '/personal',
-      name: 'personal',
-      component (resolve) {
-        require.ensure(['../components/personal_header/personal_header'], () => {
-          resolve(require('../components/personal_header/personal_header'))
-        })
-      }
-    }]
+    }
+  }, {
+    path: '/personal',
+    name: 'personal',
+    component (resolve) {
+      require.ensure(['../components/personal_header/personal_header'], () => {
+        resolve(require('../components/personal_header/personal_header'))
+      })
+    }
   }
 ]
 export default router
