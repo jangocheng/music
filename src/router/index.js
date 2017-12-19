@@ -32,6 +32,14 @@ const router = [
         resolve(require('../components/personal_header/personal_header'))
       })
     }
+  }, {
+    path: '/search',
+    name: 'search',
+    component (resolve) {
+      require.ensure(['../views/search/search'], () => {
+        resolve(require('../views/search/search'))
+      })
+    }
   }
 ]
 export default router

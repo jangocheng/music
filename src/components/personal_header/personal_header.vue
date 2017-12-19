@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="personal_header">
     <toolbar></toolbar>
       <mu-tabs :value="activaTab" @change="handleChange" style="background-color:#fff;height:25px;">
         <mu-tab value="musics" title="音乐" style="color:black"/>
@@ -37,3 +37,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.personal_header{
+ margin-top: 55px;
+}
+</style>
