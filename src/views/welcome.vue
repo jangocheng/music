@@ -2,7 +2,7 @@
   <div class="welcome-page">
     <div class="welcome-page-content">
       <p class="welcome-page-content_skip">
-        <mu-raised-button :label="'跳过'+countdown" class="demo-raised-button" @click="enter" primary/>
+        <i class="demo-raised-button" @click="enter">跳过{{countdown}}</i>
       </p>
     </div>
   </div>
@@ -51,10 +51,22 @@ export default {
   &-content {
     &_skip {
       position: absolute;
-      top: 100px;
-      left: 100px;
+      top: 85%;
+      left: 65%;
       width: 100%;
     }
   }
+}
+.demo-raised-button{
+  font-size:15px;
+  text-align: center;
+  padding: 5px 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 1px solid #ccd0cf;
+  background-color: rgba(0, 0, 0, 0);
+
 }
 </style>

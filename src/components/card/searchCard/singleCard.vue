@@ -57,7 +57,8 @@
   list-style: none;
 }
 .single-list  li{
-  padding: 5px;
+  margin-left: 15px;
+  padding: 12px;
   border-bottom: 1px solid #e1e5e4;
 }
 .song-name{

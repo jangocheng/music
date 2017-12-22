@@ -22,19 +22,19 @@
                     </tabitem>
                 </tab>
                 <swiper v-model="index" height="100%" :show-dots="false" class="swiper-container">
-                    <swiperitem :key="1">
+                    <swiper-item :key="1">
                         <div class="tab-swiper vux-center search-area">
                           <v-single-list :songs="songs"></v-single-list>
                         </div>
-                    </swiperitem>
-                    <!-- <swiper-item :key="2">
+                    </swiper-item>
+                    <swiper-item :key="2">
                         <div class="tab-swiper vux-center search-area">
                           <v-singer-list :singer="singer"></v-singer-list>
                         </div>
                     </swiper-item>
                     <swiper-item :key="3">
                         <div class="tab-swiper vux-center search-area">
-                          <v-album-list :albums="albums"></v-album-list>
+                          <!-- <v-album-list :albums="albums"></v-album-list> -->
                         </div>
                     </swiper-item>
                     <swiper-item :key="4">
@@ -51,7 +51,7 @@
                         <div class="tab-swiper vux-center search-area">
                           <v-mv-list :MVs="mvs"></v-mv-list>
                         </div>
-                    </swiper-item> -->
+                    </swiper-item>
                 </swiper>
             </div>
         </div>
@@ -63,13 +63,13 @@
   import {Tab, TabItem} from 'vux/src/components/tab'
   import {Swiper, SwiperItem} from 'vux/src/components/swiper'
   import vSingleList from '../../components/list/search/singleList'
-  // import vSingerList from '../../components/list/search/singerList'
-  // import vAlbumList from '../../components/list/search/albumList';
-  // import vPlayLists from '../../components/list/search/playLists';
-  // import vUserList from '../../components/list/search/userList';
-  // import vMvList from '../../components/list/search/mvList';
+  import vSingerList from '../../components/list/search/singerList'
+  // import vAlbumList from '../../components/list/search/albumList'
+  import vPlayLists from '../../components/list/search/playLists'
+  import vUserList from '../../components/list/search/userList'
+  import vMvList from '../../components/list/search/mvList'
   const list = () => ['单曲', '歌手', '专辑', '歌单', '用户', 'MV']
-  const hotKeywordsList = () => ['清白之年', '我喜欢上你时的内心活动', '我想和你唱',
+  const hotKeywordsList = () => ['晴天', '清白之年', '我喜欢上你时的内心活动', '我想和你唱',
     'hyukoh', '童话镇', '陈奕迅', '漂洋过海来看你', '许嵩', '成都', '林俊杰']
   export default {
     name: 'search',
@@ -90,22 +90,22 @@
       }
     },
     // watch $route 决定是否清除关键词
-    // watch: {
-      // '$route' (to, from) {
-      //   if (from.name === 'find') {
-      //       this.keywords = ''
-      //       this.isShowHot = true
-      //   }
-      // }
-    // },
+    watch: {
+      '$route' (to, from) {
+        if (from.name === 'home') {
+          this.keywords = ''
+          this.isShowHot = true
+        }
+      }
+    },
     methods: {
       initSearchList () {
         this.getSingleResource()//  获取搜索单曲
         // this.getAlbumResource() //  获取搜索专辑
-        // this.getSingerResource() //  获取搜索歌手
-        // this.getPlayListResource() //  获取搜索歌单
-        // this.getUserResource() //  获取搜索用户
-        // this.getMvResource() // 获取搜索MV
+        this.getSingerResource() //  获取搜索歌手
+        this.getPlayListResource() //  获取搜索歌单
+        this.getUserResource() //  获取搜索用户
+        this.getMvResource() // 获取搜索MV
       },
       goBack () {
         this.$router.push({
@@ -162,7 +162,7 @@
       },
       //  获取搜索歌单
       getPlayListResource () {
-        api.getSearchResource(this.$route.query.keywords, 1000, 30, 0)
+        api.getSearchResource(this.$route.query.keywords, 30, 0, 1000)
           .then((response) => {
             this.playlist = response.data.result.playlists
           })
@@ -172,7 +172,7 @@
       },
       //  获取搜索用户
       getUserResource () {
-        api.getSearchResource(this.$route.query.keywords, 1002, 30, 0)
+        api.getSearchResource(this.$route.query.keywords, 30, 0, 1002)
           .then((response) => {
             this.user = response.data.result.userprofiles
           })
@@ -182,7 +182,7 @@
       },
       //  获取搜索MV
       getMvResource () {
-        api.getSearchResource(this.$route.query.keywords, 1004, 30, 0)
+        api.getSearchResource(this.$route.query.keywords, 30, 0, 1004)
           .then((response) => {
             this.mvs = response.data.result.mvs
           })
@@ -194,14 +194,14 @@
     components: {
       tab: Tab,
       tabitem: TabItem,
-      swiper: Swiper,
-      swiperitem: SwiperItem,
-      vSingleList
-      // vSingerList,
+      Swiper,
+      SwiperItem,
+      vSingleList,
+      vSingerList,
       // vAlbumList,
-      // vPlayLists,
-      // vUserList,
-      // vMvList
+      vPlayLists,
+      vUserList,
+      vMvList
     }
   }
 </script>
@@ -302,19 +302,27 @@
   width:100%;
   height: 100%;
 }
-    /* .vux-swiper,
-    .vux-slider,
-    .tab-swiper
-      height 100%
-    .tab-swiper
-      background-color #fff
-    .search-area
-      background-color: #fff;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      ul
-        list-style: none */
+.vux-swiper{
+    height: 100%;
+}
+.vux-slider{
+    height: 100%;
+}
+.tab-swiper{
+    height: 100%;
+}
+.tab-swiper{
+  background-color: #fff;
+}
+.search-area{
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+.search-area ul{
+  list-style: none;
+}
 // 过渡效果
 .fade-enter-active
 .fade-leave-active{

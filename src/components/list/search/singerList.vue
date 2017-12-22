@@ -1,10 +1,11 @@
 <template>
   <ul class="singer-list">
     <li class="singer-card"  v-for="(data, index) in singer" @click="jumpSingerDetail(data.id)" :key="index">
-      <img v-lazy="data.picUrl + '?param=200y200'" lazy="loading" class="avatar">
+      <!-- <img v-lazy="data.picUrl" lazy="loading" class="avatar"> -->
+      <img :src="data.picUrl" lazy="loading" class="avatar">
       <p class="singer-name">
         <span class="name" style="-webkit-box-orient: vertical;">{{data.name}}</span>
-        <span class="trans" v-show="data.trans">({{data.trans}})</span>
+        <span class="trans" v-if="data.alia">({{data.alia[0]}})</span>
       </p>
     </li>
   </ul>
@@ -43,7 +44,7 @@
 .avatar{
   width: 0;
   flex: 1 0 15%;
-  padding: 5px 0;
+  padding: 5px 3px;
 }
 .singer-name{
   flex: 1 0 85%;
